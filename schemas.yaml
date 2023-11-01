@@ -1,0 +1,30 @@
+components:
+  schemas:
+    type:
+      type: string
+    username:
+      type: string
+    Product2:
+      type: object
+      description: Product2 fields
+      properties:
+        id:
+          type: string   
+    Asset:
+      type: object
+      description: Asset and products fields
+      properties:
+        id:
+          type: string
+        product:
+          $ref: '#/components/schemas/Product2'
+    Error:
+      type: object
+      properties:
+        success:
+          description: A false value to indicate an error
+          type: boolean
+          default: false
+        message:
+          description: A human-readable error message
+          type: string

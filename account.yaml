@@ -1,0 +1,284 @@
+post:
+  tags: 
+    - Character
+  summary: save info of account and character
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                account:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    genre:
+                      type: string
+                    birthdate:
+                      type: string
+                    name:
+                      type: string
+                character:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    classId:
+                      type: string
+                      description: Product2Id
+                    raceId:
+                      type: string
+                      description: Product2Id
+                    colorId:
+                      type: string
+                      description: Product2Id
+  responses:
+    201:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                id:
+                  description: id of created account
+                  type: string
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+get:
+  parameters:
+  - name: username
+    description: The `username` of the account and character
+    in: query
+    required: true
+    schema:
+      $ref: "schemas.yaml#/components/schemas/username"
+  tags: 
+    - Character
+  summary: get info about account and character
+  responses:
+    200:
+      description: The account info corresponding to the provided `username`
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                account:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    genre:
+                      type: string
+                    birthdate:
+                      type: string
+                    name:
+                      type: string
+                character:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    class:
+                      $ref : "schemas.yaml#/components/schemas/Asset"
+                    race:
+                      $ref : "schemas.yaml#/components/schemas/Asset"
+                    color:
+                      $ref : "schemas.yaml#/components/schemas/Asset"
+                    level:
+                      type: integer
+                    levelUp:
+                      type: boolean
+                      description: user leveled up since last requisition?
+                    xp:
+                      type: integer
+                    bonusXp:
+                      type: integer
+                      description: xp won due to an action (uses this to show a congratulation message)
+                    lostXp:
+                      type: integer
+                      description: xp lost due to status effect (uses this to show the status effect)
+                    level_cap:
+                      type: integer
+                      description: maximum xp value of the level
+                    coins:
+                      type: integer
+                    attribute_points:
+                      type: integer
+                    attributes:
+                      type: array
+                      items:
+                        $ref : "schemas.yaml#/components/schemas/Asset"
+                    inventory:
+                      description: initially has only potions
+                      type: array
+                      items:
+                        $ref : "schemas.yaml#/components/schemas/Asset"
+                    quests:
+                      type: array
+                      description: array of books (quests) from the user
+                      items:
+                        $ref : "schemas.yaml#/components/schemas/Asset"
+    404:
+      description: No account found for the provided `username`
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+patch:
+    tags: 
+      - Character
+    summary: update info about account
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              request:
+                type: object
+                properties:
+                  email:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+                  genre:
+                    type: string
+                  birthdate:
+                    type: string
+                  name:
+                    type: string                              
+    responses:
+      201:
+        description: success request
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    description: A false value to indicate an error
+                    type: boolean
+                    default: true
+                  message:
+                    description: A human-readable error message
+                    type: string
+                  id:
+                    description: id of updated account
+                    type: string
+      404:
+        description: Not found
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/components/schemas/Error"
+      500:
+        description: Unexpected error
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/components/schemas/Error"
+put:
+    tags: 
+      - Character
+    summary: update info about character (mostly attributes points)
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              request:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: AssetId
+                        points:
+                          type: integer
+                          description: attributes points on app                                
+    responses:
+      201:
+        description: success request
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    description: A false value to indicate an error
+                    type: boolean
+                    default: true
+                  message:
+                    description: A human-readable error message
+                    type: string
+                  id:
+                    description: id of updated account
+                    type: string
+      404:
+        description: Not found
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/components/schemas/Error"
+      500:
+        description: Unexpected error
+        content:
+          application/json:
+            schema:
+              $ref: "schemas.yaml#/components/schemas/Error"

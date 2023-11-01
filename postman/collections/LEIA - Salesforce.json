@@ -1,0 +1,1789 @@
+{
+	"info": {
+		"_postman_id": "fd306af0-8a7e-4b18-8d4c-89d060c85e7a",
+		"name": "LEIA - Salesforce",
+		"description": "Endpoints from Salesforce API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "21006387-fd306af0-8a7e-4b18-8d4c-89d060c85e7a"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "get list of products by record type",
+					"id": "7c129b74-80ae-4858-8165-70ffde613ad5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/product?type=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"description": "(Required) The `recordType DeveloperName` of product",
+									"key": "type",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "70c2fa53-c27b-4575-beee-ca0f7a962590",
+							"name": "The list of products corresponding to the provided `type`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/product?type=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"description": "(Required) The `recordType DeveloperName` of product",
+											"key": "type",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"products\": [\n    {\n      \"id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "adfb682d-f4d1-489b-9bb5-368386d7d5f2",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/product?type=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"description": "(Required) The `recordType DeveloperName` of product",
+											"key": "type",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "171c5644-75ce-4f19-b320-6d59a0a2c6ef",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/product?type=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"description": "(Required) The `recordType DeveloperName` of product",
+											"key": "type",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "81a1be2c-078e-4c83-ab03-f2925d3f72c0",
+			"description": "Operations related to products (books, classes, races, colors, potions, attributes, coins)"
+		},
+		{
+			"name": "Character",
+			"item": [
+				{
+					"name": "save info of account and character",
+					"id": "0fb17d64-fc24-4dcc-869d-ed583ea43cd9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"account\": {\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"genre\": \"<string>\",\n      \"birthdate\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"character\": {\n      \"name\": \"<string>\",\n      \"classId\": \"<string>\",\n      \"raceId\": \"<string>\",\n      \"colorId\": \"<string>\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "725bd28a-20cf-4c31-b300-5c730c511a0c",
+							"name": "success request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"account\": {\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"genre\": \"<string>\",\n      \"birthdate\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"character\": {\n      \"name\": \"<string>\",\n      \"classId\": \"<string>\",\n      \"raceId\": \"<string>\",\n      \"colorId\": \"<string>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"id": "ebfe214d-8468-4aee-87f1-b05260ede444",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"account\": {\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"genre\": \"<string>\",\n      \"birthdate\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"character\": {\n      \"name\": \"<string>\",\n      \"classId\": \"<string>\",\n      \"raceId\": \"<string>\",\n      \"colorId\": \"<string>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "752a1c56-f3ad-41c4-8a2e-c00298df9583",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"account\": {\n      \"email\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"genre\": \"<string>\",\n      \"birthdate\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"character\": {\n      \"name\": \"<string>\",\n      \"classId\": \"<string>\",\n      \"raceId\": \"<string>\",\n      \"colorId\": \"<string>\"\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get info about account and character",
+					"id": "8bb3271d-1915-4bb7-858f-49fb316eca18",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/account?username=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account"
+							],
+							"query": [
+								{
+									"description": "(Required) The `username` of the account and character",
+									"key": "username",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d7817c5c-1406-4adb-a04a-2a433608a00a",
+							"name": "The account info corresponding to the provided `username`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"account\": {\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"genre\": \"<string>\",\n    \"birthdate\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"character\": {\n    \"name\": \"<string>\",\n    \"class\": {\n      \"id\": \"<string>\",\n      \"product\": {\n        \"id\": \"<string>\"\n      }\n    },\n    \"race\": {\n      \"id\": \"<string>\",\n      \"product\": {\n        \"id\": \"<string>\"\n      }\n    },\n    \"color\": {\n      \"id\": \"<string>\",\n      \"product\": {\n        \"id\": \"<string>\"\n      }\n    },\n    \"level\": \"<integer>\",\n    \"levelUp\": \"<boolean>\",\n    \"xp\": \"<integer>\",\n    \"bonusXp\": \"<integer>\",\n    \"lostXp\": \"<integer>\",\n    \"level_cap\": \"<integer>\",\n    \"coins\": \"<integer>\",\n    \"attribute_points\": \"<integer>\",\n    \"attributes\": [\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      }\n    ],\n    \"inventory\": [\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      }\n    ],\n    \"quests\": [\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"product\": {\n          \"id\": \"<string>\"\n        }\n      }\n    ]\n  }\n}"
+						},
+						{
+							"id": "4a42f408-2fac-4a26-8dad-2d3926f8c7a2",
+							"name": "No account found for the provided `username`",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "67e3ca54-d976-4073-a153-da8abcac8150",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/account?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update info about account",
+					"id": "2d454906-2f92-491c-8d40-d27e6fc78da1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"genre\": \"<string>\",\n    \"birthdate\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b4937e9c-c549-434e-a3c3-4ffcc4bfa815",
+							"name": "success request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"genre\": \"<string>\",\n    \"birthdate\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"id": "f5d9a43e-10f4-41b6-874a-6fd484ab540d",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"genre\": \"<string>\",\n    \"birthdate\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "2d0df343-bef6-4598-ba2e-0584858e540a",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"email\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"genre\": \"<string>\",\n    \"birthdate\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update info about character (mostly attributes points)",
+					"id": "40b4718e-36ab-45bc-a73e-5df1be87afbd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"attributes\": [\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "425fae23-35e0-40c4-8048-7de333c1c694",
+							"name": "success request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"attributes\": [\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"id": "801208ba-1a7d-4490-93dc-2712f20d8efb",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"attributes\": [\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "31da8877-732b-412c-8ae3-f3249029dea0",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"attributes\": [\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"points\": \"<integer>\"\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/account",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"account"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "1a0c6d15-d596-421a-8e16-470fa3bd9d10",
+			"description": "Operations related to the character or account (including attributes)"
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "get list of available classes to character",
+					"id": "0f9791b4-afb9-4406-9b7f-9eece7ed5c88",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/class?username=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"class"
+							],
+							"query": [
+								{
+									"description": "(Required) The `username` of the account and character",
+									"key": "username",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "aaf90487-5a66-42ed-a4d2-d11ab8c5029a",
+							"name": "success request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/class?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"classes\": [\n    {\n      \"id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "2e743995-7a9d-49eb-bf87-6e25531fd8b9",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/class?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "b58d1e5f-84ba-4359-a19e-5c927d7f5012",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/class?username=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "save new character class",
+					"id": "36b58764-1901-4c72-bc5a-0092b706c188",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"classId\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/class",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"class"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "fd2ae6e0-c407-4124-8c7d-ab3c6413933c",
+							"name": "success request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"classId\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/class",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"id": "831099dc-f8bd-454c-8673-58fb6f79023b",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"classId\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/class",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "d43e022b-bc4d-401c-869b-f765592871ac",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"classId\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/class",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"class"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "0563136d-cfd7-4d71-a26d-b1129df7cd51",
+			"description": "Operations related to the class of a character"
+		},
+		{
+			"name": "Quest",
+			"item": [
+				{
+					"name": "save new quest to character",
+					"id": "15b3f0b5-7b33-42b1-ac7e-742826e3ece9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/quest",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quest"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "eb95623c-fbaa-4ec6-ab48-b166e3da746f",
+							"name": "success request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"id": "a4ff0450-4565-47e0-8a3b-382ddd8fe282",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "e9ccdfdb-d81a-4119-a0f6-84da688ecbff",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update a quest",
+					"id": "709ed1a3-2958-4369-88be-38f26d77edcc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\",\n    \"currentPage\": \"<integer>\",\n    \"currentChapter\": \"<integer>\",\n    \"completed\": \"<boolean>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/quest",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quest"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "f0d5a618-fa63-44cb-9b8d-462c3a24eb11",
+							"name": "success request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\",\n    \"currentPage\": \"<integer>\",\n    \"currentChapter\": \"<integer>\",\n    \"completed\": \"<boolean>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"id\": \"<string>\",\n  \"hasCheckpoint\": \"<boolean>\",\n  \"capped\": \"<boolean>\",\n  \"currentPage\": \"<integer>\",\n  \"currentChapter\": \"<integer>\"\n}"
+						},
+						{
+							"id": "7f454906-cb4b-4b94-8adb-19954d798c46",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\",\n    \"currentPage\": \"<integer>\",\n    \"currentChapter\": \"<integer>\",\n    \"completed\": \"<boolean>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "47f1a599-e76f-447c-8a27-385cf41798a7",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"request\": {\n    \"username\": \"<string>\",\n    \"id\": \"<string>\",\n    \"currentPage\": \"<integer>\",\n    \"currentChapter\": \"<integer>\",\n    \"completed\": \"<boolean>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/quest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get list of available quests to character",
+					"id": "e4a29de6-e31d-4570-8813-f4b66fcf59fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/quest?username=<string>&recommendation=false",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quest"
+							],
+							"query": [
+								{
+									"description": "(Required) The `username` of the account and character",
+									"key": "username",
+									"value": "<string>"
+								},
+								{
+									"description": "show only recommendations?",
+									"key": "recommendation",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8b80cfc7-7668-4430-aaf0-c78b1b31822a",
+							"name": "success request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/quest?username=<string>&recommendation=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"description": "show only recommendations?",
+											"key": "recommendation",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"<string>\",\n  \"quests\": [\n    {\n      \"id\": \"<string>\",\n      \"info\": {\n        \"id\": \"<string>\"\n      },\n      \"recommendation\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"info\": {\n        \"id\": \"<string>\"\n      },\n      \"recommendation\": \"<boolean>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "0294e31e-a92d-4d0e-9da3-024ddfc27fc8",
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/quest?username=<string>&recommendation=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"description": "show only recommendations?",
+											"key": "recommendation",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						},
+						{
+							"id": "ff2cef8c-e53b-4cd3-bd0a-8e240ea56d33",
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/quest?username=<string>&recommendation=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"quest"
+									],
+									"query": [
+										{
+											"description": "(Required) The `username` of the account and character",
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"description": "show only recommendations?",
+											"key": "recommendation",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "d481440a-18b0-473c-ab3c-f2c79539f2fa",
+			"description": "Operations related to the books (quests)"
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.salesforce.com/services/oauth2/token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "f9e8ae29-b6e6-4b8b-9ed2-9d724e80b826",
+			"key": "baseUrl",
+			"value": "https://leia-dev-ed.develop.my.salesforce.com/services/apexrest"
+		}
+	]
+}

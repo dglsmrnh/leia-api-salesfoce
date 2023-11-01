@@ -1,0 +1,174 @@
+post:
+  tags: 
+    - Quest
+  summary: save new quest to character
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                username:
+                  type: string
+                id:
+                  type: string
+                  description: Product2Id
+  responses:
+    201:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                id:
+                  description: AssetId of new book
+                  type: string
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+patch:
+  tags: 
+    - Quest
+  summary: update a quest
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                username:
+                  type: string
+                id:
+                  type: string
+                  description: AssetId
+                currentPage:
+                  type: integer
+                currentChapter:
+                  type: integer     
+                completed:
+                  type: boolean
+                  description: uses this to inform if user is completing a book (quest)           
+  responses:
+    201:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                id:
+                  description: AssetId
+                  type: string
+                hasCheckpoint:
+                  type: boolean
+                capped:
+                  description: page/chapter update is capped by a checkpoint?
+                  type: boolean                  
+                currentPage:
+                  type: integer
+                  description: updated page value (maybe capped by checkpoint)
+                currentChapter:
+                  type: integer
+                  description: updated chapter value (maybe capped by checkpoint)
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+get:
+  tags: 
+    - Quest
+  summary: get list of available quests to character
+  parameters:
+    - name: username
+      description: The `username` of the account and character
+      in: query
+      required: true
+      schema:
+        $ref: "schemas.yaml#/components/schemas/username"
+    - name: recommendation
+      description: show only recommendations?
+      in: query
+      schema:
+        type: string
+        default: false
+  responses:
+    200:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                quests:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Product2Id
+                      info:
+                        $ref: "schemas.yaml#/components/schemas/Product2"
+                      recommendation:
+                        type: boolean
+                        description: identify if a quest is a recommendation to user
+
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"

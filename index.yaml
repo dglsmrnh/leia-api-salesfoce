@@ -1,0 +1,42 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: 'LEIA - Salesforce'
+  description: 'Endpoints from Salesforce API'
+servers:
+  - url: https://leia-dev-ed.develop.my.salesforce.com/services/apexrest
+    description: Production
+  - url: https://leiaqa-dev-ed.develop.my.salesforce.com/services/apexrest
+    description: QA
+  - url: https://leiadeveloper-dev-ed.develop.my.salesforce.com/services/apexrest
+    description: Development
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    OAuth2Password:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+security:
+  - OAuth2Password: []
+tags:
+  - name: Products
+    description: Operations related to products (books, classes, races, colors, potions, attributes, coins)
+  - name: Character
+    description: Operations related to the character or account (including attributes)
+  - name: Class
+    description: Operations related to the class of a character
+  - name: Quest
+    description: Operations related to the books (quests)
+paths:
+  /product:
+    $ref: "product.yaml"
+  /account:
+    $ref: "account.yaml"
+  /class:
+    $ref: "class.yaml"
+  /quest:
+    $ref: "quest.yaml"
