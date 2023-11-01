@@ -1,0 +1,48 @@
+post:
+  tags: 
+    - Login
+  summary: see if login is valid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+  responses:
+    200:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+                id:
+                  description: id of account
+                  type: string
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"

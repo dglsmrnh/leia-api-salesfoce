@@ -17,6 +17,7 @@ files[] = {"id":"21006387-fd306af0-8a7e-4b18-8d4c-89d060c85e7a","path":"LEIA - S
 files[] = {"path":"account.yaml","metaData":{}}
 files[] = {"path":"class.yaml","metaData":{}}
 files[] = {"path":"index.yaml","metaData":{}}
+files[] = {"path":"login.yaml","metaData":{}}
 files[] = {"path":"product.yaml","metaData":{}}
 files[] = {"path":"quest.yaml","metaData":{}}
 files[] = {"path":"schemas.yaml","metaData":{}}

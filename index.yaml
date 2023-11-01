@@ -31,6 +31,8 @@ tags:
     description: Operations related to the class of a character
   - name: Quest
     description: Operations related to the books (quests)
+  - name: Login
+    description: Operations related to login
 paths:
   /product:
     $ref: "product.yaml"
@@ -40,3 +42,5 @@ paths:
     $ref: "class.yaml"
   /quest:
     $ref: "quest.yaml"
+  /login:
+    $ref: "login.yaml"
