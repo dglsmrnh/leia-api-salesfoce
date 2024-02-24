@@ -1,0 +1,60 @@
+post:
+  tags: 
+    - Recommendation
+  summary: save new recommendation
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            request:
+              type: object
+              properties:
+                accountId:
+                  type: string
+                book:
+                    $ref : "schemas.yaml#/components/schemas/product"
+                bookExcerpt:
+                    type: string
+                score:
+                    type: number
+                ari:
+                    type: number
+                colemanLiau:
+                    type: number
+                flesch:
+                    type: number
+                gulpease:
+                    type: number
+                status:
+                    type: string
+                
+  responses:
+    201:
+      description: success request
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  description: A false value to indicate an error
+                  type: boolean
+                  default: true
+                message:
+                  description: A human-readable error message
+                  type: string
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
+    500:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yaml#/components/schemas/Error"
