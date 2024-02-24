@@ -4,6 +4,42 @@ components:
       type: string
     username:
       type: string
+    product:
+      type: object
+      description: Product2 field to insert
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        isbn13:
+          type: string
+        isbn10:
+          type: string
+        author:
+          type: string
+        averageRating:
+          type: number
+        description:
+            type: string
+        thumbnail:
+          type: string
+        publisher:
+          type: string
+        publishDate:
+          type: string
+        maturityRating:
+          type: string
+        type:
+          type: string
+        categories:
+            type: array
+            items:
+                type: object
+                properties:
+                  name:
+                    type: string
+        
     Product2:
       type: object
       description: Product2 fields
